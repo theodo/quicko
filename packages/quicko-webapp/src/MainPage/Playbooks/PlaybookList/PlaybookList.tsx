@@ -135,8 +135,12 @@ const mapStateToProps = (state: RootState) => ({
   playbooks: Object.values(state.playbooks)
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  addPlaybook: () => dispatch(addPlaybook()),
+const mapDispatchToProps = (dispatch: Dispatch, props: any) => ({
+  addPlaybook: () => {
+    const action = addPlaybook();
+    dispatch(action);
+    props.setSelectedPlaybookId(action.playbook.id);
+  },
 });
 
 // @ts-ignore next-line
