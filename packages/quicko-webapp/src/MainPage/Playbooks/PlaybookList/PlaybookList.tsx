@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import List from '@material-ui/core/List';
@@ -70,10 +70,15 @@ const PlaybookList: FunctionComponent<PlaybookListProps> = ({
   addPlaybook,
 }) => {
   const [filteredPlaybooks, setFilteredPlaybooks] = useState(playbooks);
+  const [currentFilterText, setCurrentFilterText] = useState("");
 
+  useEffect(() => {
+    setFilteredPlaybooks(playbooks.filter(playbook => playbook.name.toLowerCase().includes(currentFilterText)));
+  }, [playbooks, currentFilterText]);
 
   const filterPlaybooks = (event: any) => {
-    setFilteredPlaybooks(playbooks.filter(playbook => playbook.name.toLowerCase().includes(event.target.value) ))
+    const text = event.target.value.toLowerCase();
+    setCurrentFilterText(text);
   }
 
   return (
