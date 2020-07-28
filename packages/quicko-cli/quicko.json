@@ -2,29 +2,23 @@
   "playbooks": {
     "477749ad-99f2-4aaf-bdd6-e39da2e568ae": {
       "id": "477749ad-99f2-4aaf-bdd6-e39da2e568ae",
-      "name": "New playbookfdsfsdf",
+      "name": "Typescript morph",
       "description": "fdsfsdf",
       "parameters": [],
       "tasks": [
-        "16cde5fe-cc68-4014-b2aa-157420a609b0",
-        "60d9febb-8e2b-440f-a4ae-a34203dff792"
+        "d3d319fa-f087-4395-9678-675f6825b6f7"
       ]
     }
   },
   "tasks": {
-    "16cde5fe-cc68-4014-b2aa-157420a609b0": {
-      "id": "16cde5fe-cc68-4014-b2aa-157420a609b0",
-      "type": "CREATE_FILE",
-      "fileName": "fdsfsdfdf",
-      "parentFolderPath": {
-        "type": "USER_INPUT"
+    "d3d319fa-f087-4395-9678-675f6825b6f7": {
+      "id": "d3d319fa-f087-4395-9678-675f6825b6f7",
+      "type": "TYPESCRIPT_TRANSFORMATION_ON_FILE",
+      "filePath": {
+        "type": "VALUE",
+        "value": "src/test-service.ts"
       },
-      "fileContent": "dfsdfsdfdsff"
-    },
-    "60d9febb-8e2b-440f-a4ae-a34203dff792": {
-      "id": "60d9febb-8e2b-440f-a4ae-a34203dff792",
-      "type": "EXECUTE_CODEMOD",
-      "codemod": "fdsfsdffsdf"
+      "transformationCode": "const codeToAddText = 'lol';\n\n(sourceFile) => {\n  sourceFile.getClasses()[0].addMembers(codeToAddText);\n  return sourceFile.getFullText();\n}\n"
     }
   }
 }
